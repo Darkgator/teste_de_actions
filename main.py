@@ -73,4 +73,8 @@ def ecoar_bpmn_base64(body: BpmnBase64Request):
     if texto is None:
         raise HTTPException(
             status_code=400,
-            detail=f"Não foi possível decodificar o conteúdo em texto, tent
+            detail=f"Não foi possível decodificar o conteúdo em texto, tentativas, {', '.join(errors)}"
+        )
+
+    # Devolve o XML cru em 'conteudo'
+    return BpmnResponse(conteudo=texto)
